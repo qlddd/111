@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta charset="UTF-8">
+		<title>三思设备管理系统</title>
+		<link rel="stylesheet" href="../bootstrap-3.3.7/dist/css/bootstrap.css">
+		<link rel="stylesheet" href="../css/mycss.css">
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../node_modules/popper.js/dist/umd/popper.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../bootstrap4/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/echarts.js"></script>
+		<style type="text/css">
+			.bordertop {
+				border-right: 2px solid rgba(200, 220, 201, 1);
+				border-image: linear-gradient(rgba(200, 220, 201, 1), transparent, rgba(200, 220, 201, 1), transparent) 5 5;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container-fluid" id="app">
+			<header class="row" style="background-color: rgb(8,17,46);">
+				<div><a href="equipmentList.html" class="hoverChange1"><span></span></a></div>
+				<div>
+					<img src="../img/system2.jpg" alt="">
+					<h1>光伏上网开关状态监测系统</h1>
+				</div>
+				<div>
+					<span></span>
+					<!-- <a href="" class="hoverChange1"><i class="glyphicon glyphicon-fullscreen"></i><span>全屏</span></a> -->
+				</div>
+			</header>
+			<div class="row padLeft borderBox padRight" style="background-color: rgb(0,0,51);">
+				<div class="row clearfix">
+					<div class="itemDiv2 float-left marLeft col-md-9" style="height:50vh">
+						<div class="leftTop"></div>
+						<div class="rightTop"></div>
+						<div class="leftBottom"></div>
+						<div class="rightBottom"></div>
+						<h4 class="fontColWhite" style="font-weight: 900;">设备位置</h4>
+						<div id="equipmentChinaMap" style="height:85%"></div>
+					</div>
+					<div class="itemDiv2 float-left marLeft col-md-2" style="height:50vh">
+						<div class="leftTop"></div>
+						<div class="rightTop"></div>
+						<div class="leftBottom"></div>
+						<div class="rightBottom"></div>
+						<h4 class="fontColWhite" style="font-weight: 900;">设备地址</h4>
+						<div style="height:85%">
+							<ul style="margin-top: 14%;">
+								<li style="margin-top: 5%;"><button type="button" class="btn btn-primary btn-lg" style="width: 40%;margin-left: 8%;font-size: 0.8vw;"
+									 @click="getinfo(1)">龙舟坪镇</button><button type="button" class="btn btn-primary btn-lg" style="width: 40%;margin-left: 10%;font-size: 0.8vw;"
+									 @click="getinfo(2)">磨市镇</button></li>
+								<li style="margin-top: 5%;"><button type="button" class="btn btn-primary btn-lg" style="width: 40%;margin-left: 8%;font-size: 0.8vw;" @click="getinfo(3)">大堰乡</button><button
+									 type="button" class="btn btn-primary btn-lg" style="width: 40%;margin-left: 10%;font-size: 0.8vw;" @click="getinfo(4)">都镇湾镇</button></li>
+								<li style="margin-top: 5%;"><button type="button" class="btn btn-primary btn-lg" style="width: 40%;margin-left: 8%;font-size: 0.8vw;" @click="getinfo(5)">鸭子口乡</button><button
+									 type="button" class="btn btn-primary btn-lg" style="width: 40%;margin-left: 10%;font-size: 0.8vw;" @click="getinfo(6)">资丘镇</button></li>
+								<li style="margin-top: 5%;"><button type="button" class="btn btn-primary btn-lg" style="width: 40%;margin-left: 8%;font-size: 0.8vw;" @click="getinfo(7)">渔峡口镇</button><button
+									 type="button" class="btn btn-primary btn-lg" style="width: 40%;margin-left: 10%;font-size: 0.8vw;" @click="getinfo(8)">火烧坪乡</button></li>
+								<li style="margin-top: 5%;"><button type="button" class="btn btn-primary btn-lg" style="width: 40%;margin-left: 8%;font-size: 0.8vw;" @click="getinfo(9)">榔坪镇</button><button
+									 type="button" class="btn btn-primary btn-lg" style="width: 40%;margin-left: 10%;font-size: 0.8vw;" @click="getinfo(10)">贺家坪镇</button></li>
+								<li style="margin-top: 5%;"><button type="button" class="btn btn-primary btn-lg" style="width: 40%;margin-left: 8%;font-size: 0.8vw;" @click="getinfo(11)">高家堰镇</button><button
+									 type="button" class="btn btn-primary btn-lg" style="width: 40%;margin-left: 10%;font-size: 0.8vw;">其他</button></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row padLeft borderBox padRight" style="background-color: rgb(0,0,51);">
+				<div class="row clearfix">
+					<div class="itemDiv2 float-left marLeft col-md-6" style="border: 0px;height:auto;">
+						<h4 class="fontColWhite" style="font-weight: 900;">设备状态</h4>
+						<div class="bordertop" style="height:85%;padding-left: 0;padding-right: 2%;color: white;">
+							<table class="marTop table" id='table1' style="font-size: 0.5vw;table-layout:fixed">
+								<thead style="text-align: center;">
+									<th style="text-align: center;width: 8%;">序号</th>
+									<th style="text-align: center;width: 23%;">设备名称</th>
+									<th style="text-align: center;width: 8%;">状态</th>
+									<th style="text-align: center;">#1开关</th>
+									<th style="text-align: center;" colspan="2">操作</th>
+									<th style="text-align: center;">#2开关</th>
+									<th style="text-align: center;" colspan="2">操作</th>
+								</thead>
+								<tbody> 
+									<tr v-for="(item,i) in list" style="height: 50px;">
+										<td style="line-height:3rem;text-align: center;">{{item.index}}</td>
+										<td style="line-height:3rem;text-align: center;"><button style="background-color: #000033;border-color:#000033;border: 0px;" @click="equipdrawchar(item.equipment)">{{item.equipment}}</button></td>
+										<td style="line-height:3rem;text-align: center;">{{item.status}}</td>
+										<td><img :src="path1[i]" style="width: 30px;height: 30px;margin-left: 1.5rem;" ></td>
+										<td><button type="button" class="btn btn-primary" @click="changedlq(item.equipmentid,2,1)" >分闸</button></td>
+										<td><button type="button" class="btn btn-primary" @click="changedlq(item.equipmentid,1,1)">合闸</button></td>
+										<td><img :src="path2[i]" style="width: 30px;height: 30px;margin-left: 1.5rem;"> </td>
+										<td><button type="button" class="btn btn-primary" @click="changedlq(item.equipmentid,4,1)" >分闸</button></td>
+										<td><button type="button" class="btn btn-primary" @click="changedlq(item.equipmentid,3,1) ">合闸</button></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="itemDiv2 float-left marLeft col-md-5" style="height:50vh;border: 0px;">
+						<h4 class="fontColWhite" style="font-weight: 900;">分闸时间</h4>
+						<div style="height:85%">
+							<div id="warning1" style="width:95%;height:95%"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=uwBlrN3aQ8U7qyuYwfCcauR4Gb5UvTYL"></script>
+	<script type="text/javascript" src="http://developer.baidu.com/map/custom/stylelist.js"></script>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/axios.min.js"></script>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#app',
+			data: {
+				list: {},
+				monarray: [],
+				path1:[],
+				path2:[],
+				onceflag:true,
+				interval:null,
+				gpsinfo:["合子坳村","胡家棚村","晒鼓坪村"]
+			},
+			methods: {
+				//画图方法
+				drawmap(gps,array){
+					// console.log(gps);
+					var _this = this
+					var eqarray=array
+					var map = new BMap.Map("equipmentChinaMap"); // 创建Map实例
+					var mapStyle = {
+						features: ["road", "building", "water", "land"], //隐藏地图上的"poi",
+						style: "midnight",
+					};
+					map.setMapStyle(mapStyle);
+					var myIconclose = new BMap.Icon("../img/close.png", new BMap.Size(33, 35),{imageSize:new BMap.Size(33, 35)});
+					var myIconopen = new BMap.Icon("../img/open.png", new BMap.Size(33, 35),{imageSize:new BMap.Size(33, 35)});
+					map.centerAndZoom(new BMap.Point(gps[0][0], gps[0][1]), 13); // 初始化地图,设置中心点坐标和地图级别
+					axios({
+						url: 'http://47.98.250.89:7002/eq/status',
+						method: 'get',
+						params: {
+							id: eqarray
+						},
+					}).then(function(result) {
+						for (var i in result.data) {
+							// console.log(result.data[i][0].switchnum );
+						// console.log(result.data);
+						if(result.data[i][0].length!=0){
+							if(result.data[i][0].switchnum == 1){
+								myIcon=myIconopen
+							}else{
+								myIcon=myIconclose
+							}
+						}else{
+							myIcon=myIconclose
+						}
+						
+						var opts = {
+						    position: new BMap.Point(gps[i][0], gps[i][1]), // 指定文本标注所在的地理位置
+						    offset: new BMap.Size(0, -10) // 设置文本偏移量
+						};
+						var label = new BMap.Label(_this.gpsinfo[i], opts);
+						label.setStyle({
+						    color: 'white',
+						    borderRadius: '5px',
+						    borderColor: 'transparent',
+						    padding: '10px',
+						    fontSize: '10px',
+						    height: '30px',
+						    lineHeight: '20px',
+						    fontFamily: '微软雅黑',
+							backgroundColor:'transparent',
+						});
+						map.addOverlay(label);
+						var marker = new BMap.Marker(new BMap.Point(gps[i][0], gps[i][1]),{icon:myIcon});
+						map.addOverlay(marker);
+					}
+					});
+					
+					// var mk = new BMap.Marker(e.point);
+					// map.addOverlay(mk);
+					// map.panTo(e.point);
+					map.addControl(new BMap.MapTypeControl({
+						mapTypes: [
+							BMAP_NORMAL_MAP,
+							BMAP_HYBRID_MAP
+						]
+					}));
+					// map.setCurrentCity("武汉");          // 设置地图显示的城市 此项是必须设置的
+					map.enableScrollWheelZoom(true);
+				},
+				//制作表格方法
+				drawechart(data1, data2) {
+					var warning1 = echarts.init(document.getElementById("warning1"));
+					option = {
+						title: {
+							textStyle: { //图例文字的样式
+								color: 'white',
+
+							},
+							text: ''
+						},
+						tooltip: {
+							trigger: 'axis'
+						},
+						color: ['#ff0097', '#ff3300'],
+						legend: {
+							selected: {
+								'分闸次数': true,
+								'分闸时间': false
+							},
+							textStyle: { //图例文字的样式
+								color: "white"
+							},
+							data: ['分闸次数', '分闸时间']
+						},
+						grid: {
+							left: '3%',
+							right: '4%',
+							bottom: '3%',
+							containLabel: true
+						},
+						toolbox: {
+							feature: {
+								saveAsImage: {}
+							}
+						},
+						xAxis: {
+							type: 'category',
+							boundaryGap: false,
+							axisLine: {
+								lineStyle: {
+									color: '#6ab2ec',
+								}
+							},
+							axisLabel: {
+								textStyle: {
+									fontSize: 15 // 让字体变小
+								}
+							},
+							data: this.monarray,
+						},
+						yAxis: {
+							type: 'value',
+							splitLine: {
+								show: true,
+								//  改变轴线颜色
+								lineStyle: {
+									// 使用深浅的间隔色
+									color: ['#132a6e']
+								}
+							},
+							//设置轴线的属性
+							axisLine: {
+								lineStyle: {
+									color: '#6ab2ec',
+								}
+							}
+						},
+						series: [{
+								name: '分闸次数',
+								type: 'line',
+								stack: '总量',
+								itemStyle: {
+									normal: {
+										color: '#ff0097', //改变折线点的颜色
+										lineStyle: {
+											color: '#ff0097' //改变折线颜色
+										}
+									}
+								},
+								data: data1
+							},
+							{
+								name: '分闸时间',
+								type: 'line',
+								stack: '总量',
+								itemStyle: {
+									normal: {
+										color: '#ff3300', //改变折线点的颜色
+										lineStyle: {
+											color: '#ff3300' //改变折线颜色
+										}
+									}
+								},
+								data: data2
+							},
+						]
+					};
+					warning1.setOption(option);
+					warning1.on("legendselectchanged", function(e) {
+						
+						for (var index = 0; index < option.legend.data.length; index++) {
+							if (e.name == option.legend.data[index]) {
+								option.legend.selected[e.name] = true; //如果选中，则显示折线
+							} else {
+								option.legend.selected[option.legend.data[index]] = false; // 将状态设置为未选中
+							}
+						}
+						warning1.setOption(option);
+					});
+				},
+				//获取表格横坐标
+				getmon() {
+					var data = new Date();
+					//获取年
+					var year = data.getFullYear();
+					//获取月
+					var mon = data.getMonth() + 1;
+					var arry = new Array();
+					for (var i = 0; i < 6; i++) {
+						mon = mon;
+						if (mon <= 0) {
+							year = year - 1;
+							mon = mon + 12;
+						}
+						if (mon < 10) {
+							mon = "0" + mon;
+						}
+						arry[5 - i] = mon + "月";
+						mon--
+					}
+					this.monarray = arry
+				},
+				//获取表格信息
+				geteqinfo(eqid,gps) {
+					var _this = this;
+					var array = [];
+					var offline=false;
+					if (eqid == 1) {
+						var eqlist1 = 't200618001,t201001001,t201101001';
+						var eqlistname = ['t200618001','t201001001','t201101001'];
+					}else if(eqid == 2){
+						var eqlist1='t200618001,t200618001,t200618001'
+						var eqlistname =['t200618001','t200618001','t200618001'];
+					}else if(eqid == 3){
+						var eqlist1='t200618001,t200618001,t200618001,t200618001'
+						var eqlistname =['t200618001','t200618001','t200618001','t200618001'];
+					}
+					else if(eqid == 4){
+						var eqlist1='t200618001,t200618001,t200618001,t200618001,t200618001,t200618001,t200618001,t200618001'
+						var eqlistname =['t200618001','t200618001','t200618001','t200618001','t200618001','t200618001','t200618001','t200618001'];
+					}
+					else if(eqid == 5){
+						var eqlist1='t200618001,t200618001,t200618001,t200618001'
+						var eqlistname =['t200618001','t200618001','t200618001','t200618001'];
+					}
+					else if(eqid == 6){
+						var eqlist1='t200618001,t200618001,t200618001,t200618001,t200618001,t200618001,t200618001'
+						var eqlistname =['t200618001','t200618001','t200618001','t200618001','t200618001','t200618001','t200618001'];
+					}
+					else if(eqid == 7){
+						var eqlist1='t200618001,t200618001,t200618001,t200618001,t200618001,t200618001,t200618001,t200618001,t200618001,t200618001'
+						var eqlistname =['t200618001','t200618001','t200618001','t200618001','t200618001','t200618001','t200618001','t200618001','t200618001','t200618001'];
+					}
+					else if(eqid == 8){
+						var eqlist1='t200618001'
+						var eqlistname =['t200618001'];
+					}
+					else if(eqid == 9){
+						var eqlist1='t200618001,t200618001,t200618001,t200618001,t200618001,t200618001,t200618001'
+						var eqlistname =['t200618001','t200618001','t200618001','t200618001','t200618001','t200618001','t200618001'];
+					}
+					else if(eqid == 10){
+						var eqlist1='t200618001,t200618001,t200618001,t200618001,t200618001'
+						var eqlistname =['t200618001','t200618001','t200618001','t200618001','t200618001'];
+					}
+					else if(eqid == 11){
+						var eqlist1='t200618001,t200618001,t200618001'
+						var eqlistname =['t200618001','t200618001','t200618001'];
+					}
+						axios({
+							url: 'http://47.98.250.89:7002/eq/find',
+							method: 'get',
+							params: {
+								id: eqlist1
+							},
+						}).then(function(res) {
+							axios({
+								url: 'http://47.98.250.89:7002/eq/status',
+								method: 'get',
+								params: {
+									id: eqlist1
+								},
+							}).then(function(result) {
+								// console.log(res.data.length);
+								for (var i in res.data) {
+								if(res.data==null){
+									continue;
+								}
+								console.log(result.data);
+								if(result.data[i][0].switchnum == 0){
+									var warningformat = '在线'
+								}else{
+									var warningformat = '离线'
+									offline = true
+								}
+								var dlpstatus1,dlpstatus2
+								if(res.data[i].A3_0==0){
+									_this.path1[i] = "../img/green1.png"
+								}else{
+									_this.path1[i] = "../img/red1.png"
+								}
+								if(res.data[i].A3_1==0){
+									_this.path2[i] = "../img/green1.png"
+								}else{
+									_this.path2[i] = "../img/red1.png"
+								}
+								
+								var eqindex = i;
+								var newlist = {
+									index:++eqindex ,
+									equipment: _this.gpsinfo[i],
+									equipmentid: eqlistname[i],
+									status:warningformat,
+									A3_0: dlpstatus1,
+									A3_1: dlpstatus2,
+								}
+								array.push(newlist);
+							}
+							// console.log(_this.path2);
+							// console.log(_this.path1);
+							_this.list = array;
+							
+							if(offline==true&&_this.onceflag==true){
+								_this.drawmap(gps,eqlist1);
+								_this.onceflag = false;
+							}else if(offline==false&&_this.onceflag==false){
+								_this.drawmap(gps,eqlist1);
+								_this.onceflag = true;
+							}
+							});
+						});
+						
+				},
+				//获取gps定位信息
+				getinfo(num) {
+					var gps = [];
+					var eqlistname = ''
+					var eqlistarray = []
+					var _this = this
+					if (num == 1) {
+						gps = [
+							[111.14583333333333, 30.534166666666668],
+							[111.11083333333333, 30.537222222222223],
+							[111.12333333333333, 30.4875]
+						];
+						eqlistname = 't200618001,t201001001,t201101001';
+						eqlistarray = ['t200618001','t201001001','t201101001'];
+						_this.gpsinfo = ["合子坳村习家坳","胡家棚村太阳山","晒鼓坪村荒田岗"]
+					} else if (num == 2) {
+						gps = [
+							[111.2225, 30.421944444444446],
+							[111.20166666666667, 30.428055555555556],
+							[111.22083333333333, 30.41611111111111]
+						];
+						eqlistname = 't200618001,t200618001,t200618001';
+						eqlistarray = ['t200618001','t201001001','t201101001'];
+						_this.gpsinfo = ["多宝寺村红土包","花桥村公审坡","救师口村杨家坳"]
+					}else if (num == 3) {
+						gps = [
+							[111.11194444444445, 30.339444444444446],
+							[111.05944444444444, 30.35472222222222],
+							[111.1575, 30.315],
+							[111.08805555555556,30.264444444444443]
+						];
+						eqlistname = 't200618001,t200618001,t200618001,t200618001';
+						eqlistarray = ['t200618001','t201001001','t201101001'];
+						_this.gpsinfo = ["边家坪村天堰恼","桂花园村杨雀岭","石磙淌村顶坪","钟家湾村小坳子"]
+					}else if (num == 4) {
+						gps = [
+							[111.03888888888889, 30.4725],
+							[111.02, 30.38722222222222],
+							[110.88777777777777, 30.328055555555554],
+							[110.946111111111,30.306666666666665],
+							[111.025555555556, 30.308888888888887],
+							[110.9225, 30.415],
+							[110.834444444444, 30.358888888888888],
+							[110.794722222222,30.2825]
+						];
+						eqlistname = 't200618001,t200618001,t200618001,t200618001,t200618001,t200618001,t200618001,t200618001';
+						eqlistarray = ['t200618001','t201001001','t201101001'];
+						_this.gpsinfo = ["塘坊河村大石坝","高桥村石岭","立志坪村墩上","五尖山村阳坡","峰岩村沙堡","水竹园村毛狗坡","璞岭村陈家湾","城五河村杜村溪"]
+					}
+					else if (num == 5) {
+						gps = [
+							[110.875,30.4411111111111],
+							[110.875833333333, 30.4411111111111],
+							[110.86, 30.4622222222222],
+							[110.857777777778,30.4986111111111]
+						];
+						eqlistname = 't200618001,t200618001,t200618001,t200618001';
+						eqlistarray = ['t200618001','t201001001','t201101001'];
+						_this.gpsinfo = ["鸭子口村土木淌","静安村堰淌坪","马连坪村上坪大湾","古坪村庙坪"]
+					}
+					else if (num == 6) {
+						gps = [
+							[110.580277777778, 30.3752777777778],
+							[110.646666666667, 30.47861111],
+							[110.693611111111, 30.4575],
+							[110.728333333333,30.4441666666667],
+							[110.727222222222, 30.4436111111111],
+							[110.608888888889, 30.375],
+							[110.736944444444, 30.3608333333333]
+						];
+						eqlistname = 't200618001,t200618001,t200618001,t200618001,t200618001,t200618001,t200618001';
+						eqlistarray = ['t200618001','t201001001','t201101001'];
+						_this.gpsinfo = ["九龙村中坪","柳松坪村大林子","五房岭村青龙岭","凉水寺村碾子坪","泉水湾村蒿子坡茶厂","水连村低坪","竹园坪村新基坪"]
+					}
+					else if (num == 7) {
+						gps = [
+							[110.492222222222, 30.4863888888889],
+							[110.530833333333, 30.4236111111111],
+							[110.534166666667, 30.4575],
+							[110.562777777778,30.4897222222222],
+							[110.41, 30.4869444444444],
+							[110.391666666667, 30.3808333333333],
+							[110.415555555556, 30.39],
+							[110.423055555556, 30.3636111111111],
+							[110.424722222222, 30.3558333333333],
+							[110.525277777778, 30.4808333333333]
+						];
+						eqlistname = 't200618001,t200618001,t200618001,t200618001,t200618001,t200618001,t200618001,t200618001,t200618001,t200618001';
+						eqlistarray = ['t200618001','t201001001','t201101001'];
+						_this.gpsinfo = ["高峰村火石埫","双龙村黄土包","西坪村大山","布政村朱家坳","龙池村柳山","梁山坝村羊子坡","板凳坳村雷家包","龙坪村郭家坳","龙坪村余家淌","沿坪村中沿乡"]
+					}
+					else if (num == 8) {
+						gps = [
+							[110.786944444444, 30.475]
+						];
+						eqlistname = 't200618001';
+						eqlistarray = ['t200618001'];
+						_this.gpsinfo = ["黍子岭村中间包"]
+					}
+					else if (num ==9) {
+						gps = [
+							[110.479444444444, 30.6105555555556],
+							[110.453888888889, 30.6130555555556],
+							[110.538333333333, 30.7383333333333],
+							[110.635833333333,30.6288888888889],
+							[110.588888888889, 30.5827777777778],
+							[110.539166666667, 30.5566666666667],
+							[110.499166666667, 30.5416666666667]
+						];
+						eqlistname = 't200618001,t200618001,t200618001,t200618001,t200618001,t200618001,t200618001';
+						eqlistarray = ['t200618001','t201001001','t201101001'];
+						_this.gpsinfo = ["茶园村亲娅","关口垭村双河口","梓榔坪村晨光家园","长丰村长丰","八角庙村黄家凳","沙地村沙地","乐园村袁家包"]
+					}
+					else if (num ==10) {
+						gps = [
+							[110.751111111111, 30.6544444444444],
+							[110.9575, 30.6663888888889],
+							[110.9375, 30.7075],
+							[110.870277777778,30.6825],
+							[110.944166666667, 30.6644444444444]
+						];
+						eqlistname = 't200618001,t200618001,t200618001,t200618001,t200618001';
+						eqlistarray = ['t200618001','t201001001','t201101001'];
+						_this.gpsinfo = ["堡镇村千家坪","青岗坪村牛地坪","七里坪村红岩子","白沙驿村分水岭","龙王冲村猴子坡"]
+					}
+					else if (num ==11) {
+						gps = [
+							[110.927777777778, 30.6061111111111],
+							[111.016666666667, 30.5783333333333],
+							[111.103611111111, 30.5519444444444]
+						];
+						eqlistname = 't200618001,t200618001,t200618001';
+						eqlistarray = ['t200618001','t201001001','t201101001'];
+						_this.gpsinfo = ["魏家洲村头坪","流溪村郑家坝","佑溪村柳树湾"]
+					}
+					this.getmon();
+					this.drawmap(gps,eqlistname);
+					this.geteqinfo(num,gps);
+					this.getechartinfo(eqlistname);
+					if(this.interval!=null){//判断计时器是否为空
+					clearInterval(this.interval);
+					this.interval=null;
+					}
+					this.interval= setInterval(this.geteqinfo,1000,num,gps);
+					
+					// this.drawechart(data1, data2);
+				},
+				//获取图标数据
+				getechartinfo(eqid){
+					let _this = this;
+					axios({
+						url: 'http://47.98.250.89:7002/eq/healthboard',
+						method: 'get',
+						params: {
+							eqid: eqid
+						},
+					}).then(function(result) {
+						var data1 = [0,0,0,0,0,0];
+						var data2 = [0,0,0,0,0,0];
+						// console.log(result.data);
+						for(var num1 in result.data){
+							data1[0] += result.data[num1][0][0]
+							data2[0] += result.data[num1][1][0]
+							data1[1] += result.data[num1][0][1]
+							data2[1] += result.data[num1][1][1]
+							data1[2] += result.data[num1][0][2]
+							data2[2] += result.data[num1][1][2]
+							data1[3] += result.data[num1][0][3]
+							data2[3] += result.data[num1][1][3]
+							data1[4] += result.data[num1][0][4]
+							data2[4] += result.data[num1][1][4]
+							data1[5] += result.data[num1][0][5]
+							data2[5] += result.data[num1][1][5]
+						}
+						// console.log(data1);
+						// console.log(data2);
+						_this.drawechart(data1,data2);
+					});
+				},
+				//修改断路器状态
+				changedlq(eqid,num,status){
+					let _this = this;
+					let eqidtrans=eqid.replace('t','a');
+					axios({
+						url: 'http://47.98.250.89:7002/send/command',
+						method: 'get',
+						params: {
+							eqid: eqidtrans,
+							num:num,
+							status:status,
+						},
+					}).then(function(result) {	
+						// console.log(eqidtrans);
+						// console.log(result.data);
+					});
+				},
+				//点击事件
+				equipdrawchar(eqid){
+					let _this = this;
+					// console.log(eqid);
+					this.getechartinfo(eqid);
+				}
+			},
+			mounted(){
+				this.getinfo(1);
+				this.getechartinfo('t200618001,t201001001,t201101001');
+			},
+		})
+	</script>
+	<!-- <script type="text/javascript">
+		$(function() {
+			var map = new BMap.Map("equipmentChinaMap"); // 创建Map实例
+			var mapStyle = {
+				features: ["road", "building", "water", "land"], //隐藏地图上的"poi",
+				style: "midnight",
+			};
+			map.setMapStyle(mapStyle);
+			map.centerAndZoom(new BMap.Point(111.14583333333333, 30.534166666666668), 13); // 初始化地图,设置中心点坐标和地图级别
+			gps = [
+				[111.14583333333333, 30.534166666666668],
+				[111.11083333333333, 30.537222222222223],
+				[111.12333333333333, 30.4875]
+			]
+			// var myIcon = new BMap.Icon("../img/box.png", new BMap.Size(52, 26));
+			for (var i in gps) {
+				var marker = new BMap.Marker(new BMap.Point(gps[i][0], gps[i][1]));
+				map.addOverlay(marker);
+			}
+			//添加地图类型控件
+			map.addControl(new BMap.MapTypeControl({
+				mapTypes: [
+					BMAP_NORMAL_MAP,
+					BMAP_HYBRID_MAP
+				]
+			}));
+			map.setCurrentCity("武汉"); // 设置地图显示的城市 此项是必须设置的
+			map.enableScrollWheelZoom(true);
+			var drawzxt = function(data1, data2) {
+				var warning1 = echarts.init(document.getElementById("warning1"));
+				var data = new Date();
+				//获取年
+				var year = data.getFullYear();
+				//获取月
+				var mon = data.getMonth() + 1;
+				var arry = new Array();
+				for (var i = 0; i < 6; i++) {
+					mon = mon;
+					if (mon <= 0) {
+						year = year - 1;
+						mon = mon + 12;
+					}
+					if (mon < 10) {
+						mon = "0" + mon;
+					}
+					arry[5 - i] = mon + "月";
+					mon--
+				}
+				option = {
+					title: {
+						textStyle: { //图例文字的样式
+							color: 'white',
+
+						},
+						text: ''
+					},
+					tooltip: {
+						trigger: 'axis'
+					},
+					color: ['#ff0097', '#ff3300'],
+					legend: {
+						selected: {
+							'分闸次数': true,
+							'分闸时间': false
+						},
+						textStyle: { //图例文字的样式
+							color: "white"
+						},
+						data: ['分闸次数', '分闸时间']
+					},
+					grid: {
+						left: '3%',
+						right: '4%',
+						bottom: '3%',
+						containLabel: true
+					},
+					toolbox: {
+						feature: {
+							saveAsImage: {}
+						}
+					},
+					xAxis: {
+						type: 'category',
+						boundaryGap: false,
+						axisLine: {
+							lineStyle: {
+								color: '#6ab2ec',
+							}
+						},
+						axisLabel: {
+							textStyle: {
+								fontSize: 15 // 让字体变小
+							}
+						},
+						data: arry,
+					},
+					yAxis: {
+						type: 'value',
+						splitLine: {
+							show: true,
+							//  改变轴线颜色
+							lineStyle: {
+								// 使用深浅的间隔色
+								color: ['#132a6e']
+							}
+						},
+						//设置轴线的属性
+						axisLine: {
+							lineStyle: {
+								color: '#6ab2ec',
+							}
+						}
+					},
+					series: [{
+							name: '分闸次数',
+							type: 'line',
+							stack: '总量',
+							itemStyle: {
+								normal: {
+									color: '#ff0097', //改变折线点的颜色
+									lineStyle: {
+										color: '#ff0097' //改变折线颜色
+									}
+								}
+							},
+							data: data1
+						},
+						{
+							name: '分闸时间',
+							type: 'line',
+							stack: '总量',
+							itemStyle: {
+								normal: {
+									color: '#ff3300', //改变折线点的颜色
+									lineStyle: {
+										color: '#ff3300' //改变折线颜色
+									}
+								}
+							},
+							data: data2
+						},
+					]
+				};
+
+				warning1.setOption(option);
+				warning1.on("legendselectchanged", function(e) {
+					// console.log(e);
+					for (var index = 0; index < option.legend.data.length; index++) {
+						if (e.name == option.legend.data[index]) {
+							option.legend.selected[e.name] = true; //如果选中，则显示折线
+						} else {
+							option.legend.selected[option.legend.data[index]] = false; // 将状态设置为未选中
+						}
+					}
+					warning1.setOption(option);
+				});
+			};
+			drawzxt([0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0])
+		});
+	</script> -->
+</html>

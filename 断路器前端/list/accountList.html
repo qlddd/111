@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta http-equiv="Access-Control-Allow-Origin" content="*" />
+		<link rel="stylesheet" href="../bootstrap-3.3.7/dist/css/bootstrap.css">
+		<link rel="stylesheet" href="../css/mycss.css">
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../node_modules/popper.js/dist/umd/popper.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../bootstrap4/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/echarts.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-2 barTitle" id="mainNav">
+					
+					<ul id="main-nav" class="nav nav-stacked">
+						<li style="background-color: #6699CC;padding-left: 20px;" id="logoimg"><img src="../img/logo7.png" alt=""></li>
+						<!-- <li style="height:8vh;background-color: #5BC0DE;color:white;font-size: 20px;line-height: 8vh;text-align: center;">logo</li> -->
+						<li>
+							<a href="accountList.html" class="fontColBlack fontNormal fontspace">
+								<i class="glyphicon glyphicon-list-alt">
+								</i>
+								账户管理
+							</a>
+						</li>
+						<li>
+							<a href="equipmentList.html" class="fontColBlack fontNormal fontspace">
+								<i class="glyphicon glyphicon-tower">
+								</i>
+								设备信息
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-10">
+					<div class="mainHeader">
+						<ul>
+							<li><a href=""><i class="glyphicon glyphicon-th-list"></i></a></li>
+							<li><h1>三思科技<small>                  -----三思而行 安全稳定</small></h1></li>
+							<li><a href="" id="userInf"><p>admin</p></a></li>
+							<li><a href=""><i class="glyphicon glyphicon-list-alt"></i></a></li>
+						</ul>
+						<div class="userInfo userhidden">
+							<div><a href=""><i class="glyphicon glyphicon-user"></i><span>个人信息</span></a></div>
+							<div><a href=""><i class="glyphicon glyphicon-off"></i><span>退出登录</span></a></div>
+						</div>
+					</div>
+					<div id="mainbox">
+						<div id="contentBox">
+							<div class="panel panel-warning">
+							  <div class="panel-heading">
+								  <ol class="breadcrumb">
+								    <li><a href="#">系统管理</a></li>
+								    <li><a href="#">人员管理</a></li>
+								  </ol>
+							  </div>
+							</div>
+							<div class="panel panel-success">
+								<div class="panel-heading">
+									人员管理
+								</div>
+								<div class="panel-body">
+									<div class="row">
+									  <div class="col-lg-4">
+									    <div class="input-group">
+									      <span class="input-group-addon">
+									        姓名
+									      </span>
+									      <input type="text" class="form-control" aria-label="...">
+									    </div><!-- /input-group -->
+									  </div><!-- /.col-lg-6 -->
+									  <div class="col-lg-4">
+									    <div class="input-group">
+									      <span class="input-group-addon">
+									        职位
+									      </span>
+									      <input type="text" class="form-control" aria-label="...">
+									    </div><!-- /input-group -->
+									  </div><!-- /.col-lg-6 -->
+									  <button class="btn btn-success marRight" type="button">查询</button>
+									  <button class="btn btn-success" type="button">重置</button>
+									</div>
+									<br>
+									<div class="marTop tableScroll">
+										<table class="col-xs-12 marTop table">
+											<thead>
+												 <th>账号</th>
+												 <th>年龄</th>
+												 <th>性别</th>
+												 <th>姓名</th>
+												 <th>手机</th>
+												 <th>更新时间</th>
+												 <th>操作</th>
+											</thead>
+											<tbody>
+												<tr>
+													<td>admin</td>
+													<td>23岁</td>
+													<td>男</td>
+													<td>管理员</td>
+													<td>18602766294</td>
+													<td>2019-11-23 09:07:23</td>
+													<td><a href="" class="marRight">角色授权</a><a href="">更多</a></td>
+												</tr>
+												<tr>
+													<td>admin</td>
+													<td>23岁</td>
+													<td>男</td>
+													<td>管理员</td>
+													<td>18602766294</td>
+													<td>2019-11-23 09:07:23</td>
+													<td><a href="" class="marRight">角色授权</a><a href="">更多</a></td>
+												</tr>
+												<tr>
+													<td>admin</td>
+													<td>23岁</td>
+													<td>男</td>
+													<td>管理员</td>
+													<td>18602766294</td>
+													<td>2019-11-23 09:07:23</td>
+													<td><a href="" class="marRight">角色授权</a><a href="">更多</a></td>
+												</tr>
+												<tr>
+													<td>admin</td>
+													<td>23岁</td>
+													<td>男</td>
+													<td>管理员</td>
+													<td>18602766294</td>
+													<td>2019-11-23 09:07:23</td>
+													<td><a href="" class="marRight">角色授权</a><a href="">更多</a></td>
+												</tr>
+												<tr>
+													<td>admin</td>
+													<td>23岁</td>
+													<td>男</td>
+													<td>管理员</td>
+													<td>18602766294</td>
+													<td>2019-11-23 09:07:23</td>
+													<td><a href="" class="marRight">角色授权</a><a href="">更多</a></td>
+												</tr>
+												<tr>
+													<td>admin</td>
+													<td>23岁</td>
+													<td>男</td>
+													<td>管理员</td>
+													<td>18602766294</td>
+													<td>2019-11-23 09:07:23</td>
+													<td><a href="" class="marRight">角色授权</a><a href="">更多</a></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<nav aria-label="Page navigation">
+									  <ul class="pagination" id="personPage">
+									    <li>
+									      <a href="#" aria-label="Previous">
+									        <span aria-hidden="true">&laquo;</span>
+									      </a>
+									    </li>
+									    <li><a href="#">1</a></li>
+									    <li><a href="#">2</a></li>
+									    <li><a href="#">3</a></li>
+									    <li><a href="#">4</a></li>
+									    <li><a href="#">5</a></li>
+									    <li>
+									      <a href="#" aria-label="Next">
+									        <span aria-hidden="true">&raquo;</span>
+									      </a>
+									    </li>
+									  </ul>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../js/vue.min.js"  type="text/javascript" charset="utf-8"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script type="text/javascript">
+		console.log('1');
+		// axios.defaults.headers.common['Content-Type'] = "application/json";
+		axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+		var app = new Vue({
+				  el: '#app',
+				  data: {
+					message: 'Hello Vue!',
+					data1:{}
+				  },
+				  created(){
+					  axios({
+						url:'http://47.98.250.89:7002/form',
+						method: 'get',
+						  headers: {
+						            'Content-Type': 'application/x-www-form-urlencoded'
+						        }
+					  }).then(res => {
+						this.data1 = res
+						console.log(res)
+					  }).catch(err=>{
+						  console.log(err)
+					  })
+				  }
+		})
+	</script>
+	<script src="../js/myjs.js" type="text/javascript" charset="utf-8"></script>
+<!-- 	<script src="../js/vue.min.js"  type="text/javascript" charset="utf-8"></script>
+	<srcipt>
+		console.log('1');
+			<!-- 		var app = new Vue({
+					  el: '#app',
+					  data: {
+						message: 'Hello Vue!',
+						data1:{}
+					  },
+					  created(){
+						  axios({
+							url:'127.0.0.1:7001/form',
+							method: 'get',
+							params: {
+							  id: tp190613006
+							}
+						  }).then(res => {
+							this.data1 = res
+							console.log(res)
+						  }).catch(err=>{
+							  console.log(err)
+						  })
+					  }
+					}) -->
+	<!--</srcipt> -->
+</html>
+

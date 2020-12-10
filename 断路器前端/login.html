@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta http-equiv="content-type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>系统登录</title>
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/vector.js"></script>
+<!-- <style>
+	.containerT{width:600px;height:300px;text-align:center;position:absolute;top:50%;left:50%;margin:-150px 0 0 -300px;border-radius:3px}
+</style> -->
+</head>
+<body>
+
+<div id="container">
+	<div id="output">
+		<div class="containerT">
+			<!-- <img src="img/logo.png" style="width: 150px;height: 150px;"> -->
+			<h1 style="color: white;font-weight: 900;font-size: 30px;">村级光扶贫电站上网开关状态监测系统</h1>
+			<img src="./img/logo.png" style="width: 150px;height: 150px;float: left;margin-top: 10px;margin-left: 60px;">
+			<form class="form" id="entry_form">
+				<input type="text" placeholder="用户名" id="entry_name" value="admin" v-model="id">
+				<input type="password" placeholder="密码" id="entry_password"  v-model="password">
+				<button type="button" id="entry_btn" @click="login">登录</button>
+				<div id="prompt" class="prompt"></div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+    $(function(){
+        Victor("container", "output");   //登陆背景函数
+        $("#entry_name").focus();
+        $(document).keydown(function(event){
+            if(event.keyCode==13){
+                $("#entry_btn").click();
+            }
+        });
+    });
+</script>
+<script src="./js/vue.js" type="text/javascript" charset="utf-8"></script>
+<script src="./js/axios.min.js"  type="text/javascript" charset="utf-8"> </script>
+<script type="text/javascript">
+	var vm = new Vue({
+		el:'#container',
+		data:{
+			id:'',
+			password:''
+		},
+		methods:{
+			login(){
+				var id = this.id;
+				var password = this.password;
+				// window.location.replace("list/deviceInterface.html");
+				axios({	
+						url:'http://47.98.250.89:7002/login',
+						method: 'get',
+						params:{
+						  id:id,
+						  pws:password
+						},
+						}).then(function(res){
+							console.log(res.data);
+							if(res.data == 1){
+								sessionStorage.setItem("userid", JSON.stringify(id));
+								window.location.replace("list/deviceInterface.html");
+							}
+							else{
+								alert("登录失败，请检查账号密码是否输入正确！");
+							}
+						});
+			}
+		}
+	})
+</script>
+
+</body>
+</html>

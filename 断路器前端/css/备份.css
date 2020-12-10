@@ -1,0 +1,100 @@
+/* 公共样式 */
+*{
+	margin: 0;
+	padding: 0;
+}
+ul{
+	list-style: none;
+}
+body{
+	font-family:Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+}
+.fontNorml{
+	font-size: 16px;
+}
+.fontSmall{
+	font-size: 12px;
+}
+.fontBig{
+	font-size: 20px;
+}
+.fontSBig{
+	font-size: 24px;
+}
+.fontrice{
+	color:rgb(174,178,183)!important;
+}
+.fontColWhite{
+	color:white!important;
+}
+.fontColBlack{
+	color:black!important;
+}
+.navbgcgray{
+	background-color: rgb(250,250,250);
+}
+
+.textliLeft{
+	padding-left: 60px!important;
+	vertical-align: -.125em;
+	text-rendering: optimizeLegibility;
+}
+.textliright{
+	padding-left: 90px!important;
+	vertical-align: -.125em;
+	text-rendering: optimizeLegibility;
+}
+.marTop{
+	margin-top: 10px;
+}
+/* 顶部样式 */
+.container-fluid{
+	padding: 0;
+	margin: 0;
+}
+
+/* 侧边栏样式 */
+#main-nav{
+	padding-left:20px;
+}
+.barTitle{
+	background-color: white;
+	min-height:100vh;
+	padding:0!important;
+}
+.barTitle i{
+	font-size: 16px;
+	margin-top:5px;
+	margin-right:10px;
+}
+.barTitle b{
+	font-size: 5px;
+	float: right;
+	margin-top: 10px;
+	margin-left:20px;
+}
+a:hover,
+a:focus{
+	color:black!important;
+	opacity: 1!important;
+	background-color: rgb(243,243,249);	
+}
+
+.textliright:hover;
+.textliright:focus{
+	color:blue!important;
+	opacity: 1!important;
+	background-color: rgb(243,243,249);	
+}
+.textliLeft:hover,
+.textliLeft:focus{
+	color:blue!important;
+	opacity: 1!important;
+	background-color: rgb(243,243,249);	
+}
+/* 内容区域 */
+/* #mainbox{
+	height: 100vh;
+	background-color: rgb(243,243,249);	
+} */
+

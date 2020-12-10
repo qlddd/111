@@ -1,0 +1,473 @@
+/* 公共样式 */
+*{
+	margin: 0;
+	padding: 0;
+}
+ul{
+	list-style: none;
+}
+body{
+	font-family:Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+}
+.fontNorml{
+	font-size: 16px;
+}
+.fontSmall{
+	font-size: 12px;
+}
+.fontBig{
+	font-size: 20px;
+}
+.fontSBig{
+	font-size: 24px;
+}
+.fontrice{
+	color:rgb(174,178,183)!important;
+}
+.fontColWhite{
+	color:white!important;
+}
+.fontColBlack{
+	color:#C0C0C0!important;
+}
+/* background-color: rgb(250,250,250); */
+.navbgcgray{
+	background-color: black; 
+}
+
+.textliLeft{
+	padding-left: 60px!important;
+	vertical-align: -.125em;
+	text-rendering: optimizeLegibility;
+}
+.textliright{
+	padding-left: 90px!important;
+	vertical-align: -.125em;
+	text-rendering: optimizeLegibility;
+}
+.marTop{
+	margin-top: 10px;
+}
+.marRight{
+	margin-right: 10px;
+}
+.marLeft{
+	margin-left: 20px;
+}
+.padLeft{
+	padding-left:20px;
+}
+.padRight{
+	padding-right:20px;
+}
+.userhidden{
+	display: none !important;
+}
+.userdisplay{
+	display: block !important;
+}
+.fontspace{
+	letter-spacing:0px;
+}
+.active{
+	color:white!important;
+	opacity: 1!important;
+	background-color: #00CED1;	
+}
+.tableScroll{
+	white-space: nowrap; overflow: hidden; overflow-x: scroll; -webkit-backface-visibility: hidden; -webkit-overflow-scrolling: touch;
+}
+.borderBox{
+	box-sizing: border-box;
+}
+/* 顶部样式 */
+.container-fluid{
+	margin:0;
+	padding-left: 0;
+}
+
+/* 侧边栏样式 */
+#main-nav{
+	padding-left:15px;
+}
+#logoimg{
+	padding-left: 15%!important;
+}
+#main-nav img{
+	width: 150px;
+	height:8vh;
+}
+.barTitle{
+	background-color: rgb(55,61,73);
+	min-height:100vh;
+	padding:0!important;
+}
+.barTitle i{
+	font-size: 16px;
+	margin-top:5px;
+	margin-right:10px;
+}
+.barTitle b{
+	font-size: 5px;
+	float: right;
+	margin-top: 10px;
+	margin-left:20px;
+}
+a:hover,
+a:focus{
+	color:black!important;
+	opacity: 1!important;
+	background-color: #00CED1;	
+	text-decoration: none;
+}
+
+.textliright:hover;
+.textliright:focus{
+	color:white!important;
+	opacity: 1!important;
+	background-color: #00CED1;	
+}
+.textliLeft:hover,
+.textliLeft:focus{
+	color:white!important;
+	opacity: 1!important;
+	background-color: #00CED1;	
+}
+/* 内容区域 *//* background-image: linear-gradient(314deg, rgb(10,111,143), rgb(23,70,91),rgb(10,110,207),rgb(23,70,91),rgb(10,110,207)) */
+/* background-image: linear-gradient(45deg,#30cfd0,#330867); */
+/* background-image: linear-gradient(45deg,#48c6ef,#6f86d6); */
+#mainbox{
+	padding-top:20px;
+	height: 92vh;
+	background-image: linear-gradient(45deg,#2b5876,#4e4376);
+}
+.col-md-10{
+	padding-left: 0;
+	padding-right: 0;
+}
+.mainHeader{
+	position: relative;
+	box-shadow: 3px 3px 3px #4e4376;
+	background-color: #99CCCC;
+}
+.mainHeader ul{
+	margin-bottom: 0;
+	overflow: hidden;
+	height:8vh;
+}
+.mainHeader ul>li{
+	float: left;
+	height: 100%;
+	text-align: center;
+	width:80px;
+}
+.mainHeader ul>li:nth-child(2){
+	width:80%;
+}
+.mainHeader ul>li:nth-child(3),
+.mainHeader ul>li:nth-child(4)
+{
+	float:right;
+}
+.mainHeader a{
+	width: 100%;
+	display: block;
+	margin-top: 10px;
+	color:black;
+	height:100%;
+	font-size: 22px;
+	line-height: 70px;
+	margin-right:40px;
+	text-decoration: none;
+	margin-top: 0;
+}
+.mainHeader a>p{
+	line-height: 66px;
+	font-size: 20px;
+}
+/* .mainHeader li:hover{
+	background-color: #F4F4F4;
+} */
+.userInfo{
+	position: absolute;
+	right:10px;
+	bottom:-90px;
+	background-color: white;
+	border-radius: 5px;
+	z-index: 1;
+}
+.userInfo div{
+	width: 150px;
+	height: 40px;
+}
+.userInfo div>a{
+	font-size: 15px;
+	margin: 0;
+	padding: 0;
+	padding-left: 10px;
+	line-height: 40px;
+}
+.userInfo div>a i{
+	margin-right: 10px;
+}
+#contentBox{
+	width: 95%;
+	margin:0 auto;
+}
+#indexPanel1,
+#indexPanel2{
+	height:220px;
+}
+#indexPanel3{
+	height:400px;
+}
+.panel{
+	background-color:transparent;
+	color:white;
+}
+.breadcrumb{
+	background-color:transparent!important;
+	margin-bottom: 0!important;
+}
+.breadcrumb a{
+	color:#3c763d!important;
+	text-decoration: none;
+}
+#personPage{
+	margin-left:79%!important;
+}
+header{
+	padding-left: 15px;
+}
+header>div{
+	float: left;
+	color:rgb(24, 144, 255);
+	height:10vh;
+	line-height: 10vh;
+}
+header>div:nth-child(1){
+	width: 8%;
+}
+header>div:nth-child(2){
+	width: 80%;
+}
+header>div:nth-child(3){
+	width: 12%;
+}
+header>div>a{
+	color:rgb(24, 144, 255);
+	line-height: 10vh;
+}
+header>div>h1{
+	line-height: 10vh;
+	margin-top: 0px;
+	margin-left:30%;
+}
+header i{
+	padding-right: 10px;
+}
+header span{
+	margin-right: 10px;
+}
+header img{
+	height: 10vh;
+}
+header>div>img{
+	float: left;
+}
+header>div>h1{
+	float:left;
+}
+.hoverChange1:hover,
+.hoverChange1:focus{
+	color:#00CED1!important;
+	text-decoration: none;
+	background-color: rgb(8,17,46)!important;
+}
+.itemDiv{
+	height:60vh;
+	position: relative;
+	border: 1px solid #224e7e;
+	padding-left: 10px;
+	padding-right: 30px;
+	margin-left:20px;
+	margin-top: 20px;
+}
+.itemDiv2{
+	height:40vh;
+	position: relative;
+	border: 1px solid #224e7e;
+	padding-left: 10px;
+	padding-right: 30px;
+	margin-left:50px;
+	margin-top: 20px;
+}
+.leftTop{
+	position:absolute;
+	left:0;
+	top:0;
+	width: 10px;
+	height: 10px;
+	border-left: 2px solid #6ff;
+	border-top: 2px solid #6ff;
+}
+.leftBottom{
+	position:absolute;
+	left:0;
+	bottom:0;
+	width: 10px;
+	height: 10px;
+	border-left: 2px solid #6ff;
+	border-bottom: 2px solid #6ff;
+}
+.rightTop{
+	position:absolute;
+	right:0;
+	top:0;
+	width: 10px;
+	height: 10px;
+	border-right: 2px solid #6ff;
+	border-top: 2px solid #6ff;
+}
+.rightBottom{
+	position:absolute;
+	right:0;
+	bottom:0;
+	width: 10px;
+	height: 10px;
+	border-right: 2px solid #6ff;
+	border-bottom: 2px solid #6ff;
+}
+.itemDiv h3{
+	color: #34a0ca;
+}
+.equipmentMap{
+	height:60vh;
+	position: relative;
+	border: 1px solid #224e7e;
+	padding-left: 10px;
+	margin-left:20px;
+	margin-top: 20px;
+}
+.equipmentMap h3{
+	color: #34a0ca;
+}
+.equipmentnav{
+	margin-top: 20px;
+	font-size: 16px;
+	color:white;
+	font-weight: 500;
+	position: relative;
+}
+.equipmentnav>span{
+	margin-left: 35px;
+}
+#erectingMachine1{
+	height: 30vh;
+	margin-left:10%;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+.divbgimg1{
+	background-image: url(../img/332.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.divbgimg1>span{
+	width:50%;
+	float: left;
+	display: block;
+	height:40px;
+	line-height: 40px;
+	color:white;
+	padding-left:10px;
+	font-size: 16px;
+}
+.divbgimg2{
+	background-image: url(../img/biankuang.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.divbgimg2>h4{
+	color:white;
+	display: block;
+	height:50px;
+	line-height: 50px;
+	padding-left:10px;
+}
+.divbgimg2>span{
+	color:rgb(103, 134, 224);
+	display: block;
+	height:50px;
+	line-height: 50px;
+	padding-left:10px;
+}
+.divbgimg3{
+	background-image: url(../img/biankuang.jpg);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 40px;
+}
+.divbgimg3>h4{
+	color:white;
+	display: block;
+	height:50px;
+	line-height: 50px;
+	padding-left:10px;
+	padding-top:10px;
+}
+.divbgimg3>span{
+	color:rgb(103, 134, 224);
+	width: 50%;
+	float: left;
+	display: block;
+	height:50px;
+	line-height: 50px;
+	padding-left:30px;
+	
+}
+.divbgimg3>span:nth-child(2){
+	width: 80%;
+}
+#transbtn{
+	position: absolute;
+	right:0;
+	bottom: 0;
+}
+#transbtn>a:nth-child(1){
+	font-size: 20px;
+	color:rgb(224,28,59);
+	text-decoration: none;
+	font-weight: 400;
+}
+#transbtn>a:nth-child(2){
+	font-size: 20px;
+	color:rgb(77,155,217);
+	text-decoration: none;
+	font-weight: 400;
+	margin-left: 10px;
+}
+#transbtn>a:hover{
+	background-color:transparent;
+	color:white!important;
+}
+#videoBox{
+	height:90vh;
+}
+#videoBox>div{
+	width: 31%;
+	height:28vh;
+	float: left;
+	border:2px solid rgb(255,204,0);
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+.tab-content .active{
+	background-color: transparent;
+}

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="./bootstrap-3.3.7/dist/css/bootstrap.css">
+		<link rel="stylesheet" href="./css/mycss.css">
+		<script src="./js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./node_modules/popper.js/dist/umd/popper.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./bootstrap4/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/echarts.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-2 barTitle" id="mainNav">	
+					<ul id="main-nav" class="nav nav-stacked">
+						<li style="background-color: #6699CC;padding-left: 20px;" id="logoimg"><img src="./img/logo7.png" alt=""></li>
+						<!-- <li style="height:8vh;background-color: #5BC0DE;color:white;font-size: 20px;line-height: 8vh;text-align: center;">logo</li> -->
+						<li>
+							<a href="index.html" class="fontColBlack fontNormal fontspace">
+								<i class="glyphicon glyphicon-equalizer">
+								</i>
+								首页
+							</a>
+						</li>
+						<li>
+							<a href="list/accountList.html" class="fontColBlack fontNormal fontspace">
+								<i class="glyphicon glyphicon-list-alt">
+								</i>
+								账户管理
+							</a>
+						</li>
+						<li>
+							<a href="list/equipmentList.html" class="fontColBlack fontNormal fontspace">
+								<i class="glyphicon glyphicon-tower">
+								</i>
+								设备信息
+							</a>
+						</li>
+						<li>
+							<a href="list/recordList.html" class="fontColBlack fontNormal fontspace">
+								<i class="glyphicon glyphicon-signal">
+								</i>
+								设备列表
+							</a>
+						</li>
+						<li>
+							<a href="#" class="fontColBlack fontNormal fontspace">
+								<i class="glyphicon glyphicon-indent-left">
+								</i>
+								报表信息
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-10">
+					<div class="mainHeader">
+						<ul>
+							<li><a href=""><i class="glyphicon glyphicon-th-list"></i></a></li>
+							<li><h1>三思科技<small>                  -----三思而行 安全稳定</small></h1></li>
+							<li><a href="" id="userInf"><p>admin</p></a></li>
+							<li><a href=""><i class="glyphicon glyphicon-list-alt"></i></a></li>
+						</ul>
+						<div class="userInfo userhidden">
+							<div><a href=""><i class="glyphicon glyphicon-user"></i><span>个人信息</span></a></div>
+							<div><a href=""><i class="glyphicon glyphicon-off"></i><span>退出登录</span></a></div>
+						</div>
+					</div>
+					<div id="mainbox">
+						<div id="contentBox">
+							<div class="panel panel-primary">
+							  <div class="panel-heading">首页</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<div class="panel panel-success">
+										<div class="panel-heading">待办事项</div>
+										<div class="panel-body fontNorml" id="indexPanel1"> 
+										  <p>待办事项1</p>
+										  <p>待办事项2</p>
+										  <p>待办事项3</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="panel panel-success">
+										<div class="panel-heading">设备状态</div>
+										<div class="panel-body fontNorml" id="indexPanel2">
+											<div id="checkWork2" style="width:90%;height:200px;">
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="panel panel-success">
+								<div class="panel-heading">考勤记录</div>
+								<div class="panel-body fontNorml" id="indexPanel3">
+									<div id="checkWork1" style="width:90%;height:350px;"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="./js/myjs.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		$(function(){
+			console.log('1');
+			 $.ajax({
+			             type: "get",
+			             async: false,
+			             url: "http://localhost:11105/htzl",
+			             dataType: "jsonp",
+			             data:{
+							 "name":"test"
+						 },
+			             // jsonpCallback:"flightHandler",
+			             success: function(json){
+			                 console.log(json);
+			             },
+			             error: function(xhr,status,error){
+							 console.log(xhr);
+							 console.log(error);
+			                 alert('2');
+			             }
+			         });
+			console.log('2');
+		})
+	</script>
+</html>

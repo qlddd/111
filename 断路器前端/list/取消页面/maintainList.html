@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="../bootstrap-3.3.7/dist/css/bootstrap.css">
+		<link rel="stylesheet" href="../css/mycss.css">
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../node_modules/popper.js/dist/umd/popper.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../bootstrap4/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/echarts.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-2 barTitle" id="mainNav">
+					
+					<ul id="main-nav" class="nav nav-stacked">
+						<li style="background-color: #6699CC;padding-left: 20px;" id="logoimg"><img src="./img/logo7.png" alt=""></li>
+						<!-- <li style="height:8vh;background-color: #5BC0DE;color:white;font-size: 20px;line-height: 8vh;text-align: center;">logo</li> -->
+						<li>
+							<a href="#" class="fontColBlack fontNormal fontspace">
+								<i class="glyphicon glyphicon-equalizer">
+								</i>
+								首页
+							</a>
+						</li>
+						<li>
+							<a href="#" class="fontColBlack fontNormal fontspace">
+								<i class="glyphicon glyphicon-list-alt">
+								</i>
+								账户管理
+							</a>
+						</li>
+						<li>
+							<a href="#" class="fontColBlack fontNormal fontspace">
+								<i class="glyphicon glyphicon-tower">
+								</i>
+								设备信息
+							</a>
+						</li>
+						<li>
+							<a href="#" class="fontColBlack fontNormal fontspace">
+								<i class="glyphicon glyphicon-signal">
+								</i>
+								设备列表
+							</a>
+						</li>
+						<li>
+							<a href="#" class="fontColBlack fontNormal fontspace">
+								<i class="glyphicon glyphicon-indent-left">
+								</i>
+								报表信息
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-10">
+					<div class="mainHeader">
+						<ul>
+							<li><a href=""><i class="glyphicon glyphicon-th-list"></i></a></li>
+							<li><h1>三思科技<small>                  -----三思而行 安全稳定</small></h1></li>
+							<li><a href="" id="userInf"><p>admin</p></a></li>
+							<li><a href=""><i class="glyphicon glyphicon-list-alt"></i></a></li>
+						</ul>
+						<div class="userInfo userhidden">
+							<div><a href=""><i class="glyphicon glyphicon-user"></i><span>个人信息</span></a></div>
+							<div><a href=""><i class="glyphicon glyphicon-off"></i><span>退出登录</span></a></div>
+						</div>
+					</div>
+					<div id="mainbox">
+						<div id="contentBox">
+							<div class="panel panel-warning">
+							  <div class="panel-heading">
+								  <ol class="breadcrumb">
+								    <li><a href="#">首页</a></li>
+								    <li><a href="#">设备管理</a></li>
+								    <li><a href="#">设备信息</a></li>
+								  </ol>
+							  </div>
+							</div>
+							<div class="panel panel-success">
+								<div class="panel-heading">
+									设备信息
+								</div>
+								<div class="panel-body">
+									<div class="row">
+									  <div class="col-lg-3">
+									    <div class="input-group">
+									      <span class="input-group-addon">
+									        设备id：
+									      </span>
+									      <input type="text" class="form-control" aria-label="...">
+									    </div><!-- /input-group -->
+									  </div><!-- /.col-lg-6 -->
+									  <div class="col-lg-3">
+									    <div class="input-group">
+									      <span class="input-group-addon">
+									        设备名称：
+									      </span>
+									      <input type="text" class="form-control" aria-label="...">
+									    </div><!-- /input-group -->
+									  </div><!-- /.col-lg-6 -->
+									  <div class="col-lg-3">
+									    <div class="input-group">
+									      <span class="input-group-addon">
+									        状态：
+									      </span>
+									      <input type="text" class="form-control" aria-label="...">
+									    </div><!-- /input-group -->
+									  </div>
+									  <button class="btn btn-success marRight" type="button">查询</button>
+									  <button class="btn btn-success" type="button">重置</button>
+									</div>
+									<br>
+									<div class="marTop tableScroll">
+										<table class="col-xs-12 marTop table">
+											<thead>
+												 <th>设备ID</th>
+												 <th>设备类型</th>
+												 <th>设备名称</th>
+												 <th>设备型号</th>
+												 <th>规格参数</th>
+												 <th>出厂日期</th>
+												 <th>使用年限</th>
+												 <th>设备状态</th>
+												 <th>操作</th>
+											</thead>
+											<tbody>
+												<tr>
+													<td>t190613006</td>
+													<td>架桥机</td>
+													<td>镇坪架桥机</td>
+													<td>A10</td>
+													<td>A10-100</td>
+													<td>2019-11-27</td>
+													<td>2</td>
+													<td>未作业</td>
+													<td><a href="" class="marRight">保养申请</a><a href=""  class="marRight">保养申请</a><a href=""  class="marRight">保养统计</a></td>
+												</tr>
+												<tr>
+													<td>t190613006</td>
+													<td>架桥机</td>
+													<td>镇坪架桥机</td>
+													<td>A10</td>
+													<td>A10-100</td>
+													<td>2019-11-27</td>
+													<td>2</td>
+													<td>未作业</td>
+													<td><a href="" class="marRight">保养申请</a><a href=""  class="marRight">保养申请</a><a href=""  class="marRight">保养统计</a></td>
+												</tr>
+												<tr>
+													<td>t190613006</td>
+													<td>架桥机</td>
+													<td>镇坪架桥机</td>
+													<td>A10</td>
+													<td>A10-100</td>
+													<td>2019-11-27</td>
+													<td>2</td>
+													<td>未作业</td>
+													<td><a href="" class="marRight">保养申请</a><a href=""  class="marRight">保养申请</a><a href=""  class="marRight">保养统计</a></td>
+												</tr>
+												<tr>
+													<td>t190613006</td>
+													<td>架桥机</td>
+													<td>镇坪架桥机</td>
+													<td>A10</td>
+													<td>A10-100</td>
+													<td>2019-11-27</td>
+													<td>2</td>
+													<td>未作业</td>
+													<td><a href="" class="marRight">保养申请</a><a href=""  class="marRight">保养申请</a><a href=""  class="marRight">保养统计</a></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<nav aria-label="Page navigation">
+									  <ul class="pagination" id="personPage">
+									    <li>
+									      <a href="#" aria-label="Previous">
+									        <span aria-hidden="true">&laquo;</span>
+									      </a>
+									    </li>
+									    <li><a href="#">1</a></li>
+									    <li><a href="#">2</a></li>
+									    <li><a href="#">3</a></li>
+									    <li><a href="#">4</a></li>
+									    <li><a href="#">5</a></li>
+									    <li>
+									      <a href="#" aria-label="Next">
+									        <span aria-hidden="true">&raquo;</span>
+									      </a>
+									    </li>
+									  </ul>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../js/myjs.js" type="text/javascript" charset="utf-8"></script>
+</html>
+
+

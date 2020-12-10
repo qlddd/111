@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta charset="UTF-8">
+		<title>光伏上网开关状态监测系统</title>
+		<link rel="stylesheet" href="../bootstrap-3.3.7/dist/css/bootstrap.css">
+		<link rel="stylesheet" href="../css/mycss.css">
+		<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../node_modules/popper.js/dist/umd/popper.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../bootstrap4/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/echarts.js"></script>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<header class="row" style="background-color: rgb(8,17,46);">
+				<!-- <div><a href="equipmentList.html" class="hoverChange1"><i class="glyphicon glyphicon-arrow-left"></i><span>返回上一级</span></a></div> -->
+				<div><a href="deviceInterface.html" class="hoverChange1" id=""><i class="glyphicon glyphicon-arrow-left"></i><span>返回上一级</span></a></div>
+				<div>
+					<img src="../img/system2.jpg" alt="">
+					<h1>光伏上网开关状态监测系统</h1>
+				</div>
+				<div>
+					<span></span>
+					<a href="" class="hoverChange1"><span></span></a>
+				</div>
+			</header>
+			<div class="row padLeft borderBox padRight" style="background-color: rgb(0,0,51); height:90vh;">
+				<ul class="nav nav-pills marTop">
+					<!-- <li><a href="#n1" data-toggle="tab" class="marLeft active fontColWhite">作业数据</a></li>	 -->
+					<li><a href="#n2" data-toggle="tab" class="marLeft active fontColWhite">开闸详情</a></li>
+				</ul>
+				<div class="tab-content" style="padding:20px;" id='mainbox1'>
+					<div class="tab-pane fade in" id="n1">
+						<div class="panel-heading">
+							设备ID：<span>t190613006</span>
+						</div>
+						<div class="row">
+							<div class="col-lg-4">
+								<div class="input-group">
+									<span class="input-group-addon">
+										开始日期
+									</span>
+									<input type="text" class="form-control" aria-label="...">
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<div class="input-group">
+									<span class="input-group-addon">
+										结束日期
+									</span>
+									<input type="text" class="form-control" aria-label="...">
+								</div>
+							</div>
+							<button class="btn btn-success marRight" type="button">查询</button>
+							<button class="btn btn-success" type="button">导出</button>
+						</div>
+						<table class="col-lg-12 marTop table">
+							<thead>
+								<th>作业开始时间</th>
+								<th>作业结束时间</th>
+								<th>作业持续时间</th>
+								<th>重量</th>
+							</thead>
+							<tbody>
+								<tr>
+									<td>2019-11-23 11：42：39</td>
+									<td>2019-11-23 11：42：39</td>
+									<td>100秒</td>
+									<td>100t</td>
+								</tr>
+								<tr>
+									<td>2019-11-23 11：42：39</td>
+									<td>2019-11-23 11：42：39</td>
+									<td>100秒</td>
+									<td>100t</td>
+								</tr>
+								<tr>
+									<td>2019-11-23 11：42：39</td>
+									<td>2019-11-23 11：42：39</td>
+									<td>100秒</td>
+									<td>100t</td>
+								</tr>
+								<tr>
+									<td>2019-11-23 11：42：39</td>
+									<td>2019-11-23 11：42：39</td>
+									<td>100秒</td>
+									<td>100t</td>
+								</tr>
+								<tr>
+									<td>2019-11-23 11：42：39</td>
+									<td>2019-11-23 11：42：39</td>
+									<td>100秒</td>
+									<td>100t</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tab-pane active fade in" id="n2">
+						<div class="panel-heading">
+							设备ID：<span>{{name}}</span>
+						</div>
+						<div class="col-lg-2">
+							<div class="input-group">
+								<span class="input-group-addon">
+									开始日期
+								</span>
+								<input type="date" class="form-control" aria-label="..." v-model="startdate">
+							</div>
+						</div>
+						<div class="col-lg-2">
+							<div class="input-group">
+								<span class="input-group-addon">
+									结束日期
+								</span>
+								<input type="date" class="form-control" aria-label="..." v-model="enddate">
+							</div>
+						</div>
+						<div class="col-lg-2">
+							<div class="input-group">
+								<span class="input-group-addon">
+									光伏乡镇
+								</span>
+								<select type="date" class="form-control" aria-label="..." v-model="ProductActive" @change="changeProduct($event)">
+									<option value="0">龙舟坪镇</option>
+									<option value="1">磨市镇</option>
+									<option value="2">大堰乡</option>
+									<option value="3">都镇湾镇</option>
+									<option value="4">鸭子口乡</option>
+									<option value="5">资丘镇</option>
+									<option value="6">渔峡口镇</option>
+									<option value="7">火烧坪乡</option>
+									<option value="8">榔坪镇</option>
+									<option value="9">贺家坪镇</option>
+									<option value="10">高家堰镇</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-lg-2">
+							<div class="input-group">
+								<span class="input-group-addon">
+									光伏地点
+								</span>
+								<select type="date" class="form-control" aria-label="..." v-model="ProductActivetown">
+									<option v-for="(item,index) in arry" :key="index" :value='item.id'>{{item.title}}</option>
+								</select>
+							</div>
+						</div>
+						<button class="btn btn-success marRight" type="button" @click="select()">查询</button>
+						<button class="btn btn-success" type="button" id='export' onclick='export1()'>导出</button>
+						<table class="col-lg-12 marTop table" id='table1'>
+							<thead>
+								<th>分闸地点</th>
+								<th>分闸开始时间</th>
+								<th>分闸结束时间</th>
+								<th>分闸开关编号</th>
+								<th>持续时间</th>
+							</thead>
+							<tbody>
+								<tr v-for="(item,i) in list.slice((currpage-1)*10,currpage*10)">
+									<td>{{item.equipment}}</td>
+									<td>{{item.startTime}}</td>
+									<td>{{item.endTime}}</td>
+									<td>#{{item.switchnum}}开关</td>
+									<td>{{item.command}}秒</td>
+								</tr>
+							</tbody>
+						</table>
+						<nav aria-label="Page navigation">
+							<ul class="pagination" id="personPage">
+								<li v-if="currpage>1" @click="currpage--">
+									<a href="#" aria-label="Previous">
+										<span aria-hidden="true">&laquo;</span>
+									</a>
+								</li>
+								<li><a href="#">{{currpage}}</a></li>
+								<li v-if="currpage<pagesum" @click="currpage++">
+									<a href="#" aria-label="Next">
+										<span aria-hidden="true">&raquo;</span>
+									</a>
+								</li>
+								<li><a href="#">总页数：{{pagesum}}</a></li>
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="../js/vue.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/axios.min.js"></script>
+	<script type="text/javascript">
+		var app = new Vue({
+			el: '#n2',
+			data: {
+				message: 'Hello Vue!',
+				eqid: '',
+				list: [],
+				pagesum: 1,
+				currpage: 1,
+				eachpage: 20,
+				bj: 0,
+				hreflist: [],
+				date1: '',
+				date2: '',
+				name: '',
+				arry: [{
+					id: 0,
+					title: '合子坳村级光伏'
+				}, {
+					id: 1,
+					title: '胡家棚村级光伏'
+				}, {
+					id: 2,
+					title: '晒鼓坪村级光伏'
+				}],
+				startdate: '',
+				enddate: '',
+				ProductActive: 0,
+				ProductActivetown: 0,
+			},
+			methods: {
+				transdate(date) {
+					var d = new Date(date);
+					var times = d.getFullYear() + '年' + (d.getMonth() + 1).toString().padStart(2, 0) + '月' + d.getDate().toString().padStart(
+							2, 0) + '日' + d.getHours().toString().padStart(2, 0) + ':' + d.getMinutes().toString().padStart(2, 0) + ':' +
+						d.getSeconds().toString().padStart(2, 0);
+					return times;
+				},
+				getnow(eqid) {
+
+					var _this = this;
+					axios({
+						url: 'http://47.98.250.89:7002/eq/getopendata',
+						method: 'get',
+						params: {
+							// page:_this.currpage,
+							id: eqid,
+							// page:1,
+						},
+					}).then(function(res) {
+						// console.log(res.data);
+						console.log(res.data);
+						_this.list = res.data.eqInfo;
+						_this.name = res.data.eqInfo1[0].equipmentname;
+						for (var i = 0; i <= _this.list.length - 1; i++) {
+							_this.list[i].equipment = res.data.eqInfo1[0].equipmentname
+							_this.list[i].startTime = _this.transdate(_this.list[i].startTime);
+							_this.list[i].endTime = _this.transdate(_this.list[i].endTime);
+						}
+						_this.pagesum = Math.ceil(res.data.eqInfo.length / 10);
+						console.log(_this.list);
+					});
+				},
+				getselhistory(eqid,time1,time2) {
+					let htime1 = time1 + ' 00:00:00';
+					let htime2 = time2 + ' 00:00:00';
+					const dtunumname = [
+						['合子坳村级光伏', '胡家棚村级光伏', '晒鼓坪村级光伏'],
+						['多宝寺村级光伏', '花桥村级光伏', '救师口村级光伏'],
+						['边家坪村级光伏','桂花园村级光伏','石磙淌村级光伏','钟家湾村级光伏'],
+						['塘坊河村级光伏','高桥村级光伏','立志坪村级光伏','五尖山村级光伏','峰岩村级光伏','水竹园村级光伏','璞岭村级光伏','城五河村级光伏'],
+						['鸭子口村级光伏','静安村级光伏','马连坪村级光伏','古坪村级光伏'],
+						['九龙村级光伏','柳松坪村级光伏','五房岭村级光伏','凉水寺村级光伏','泉水湾村级光伏','水连村级光伏','竹园坪村级光伏'],
+						['高峰村级光伏','双龙村级光伏','西坪村级光伏','布政村级光伏','龙池村级光伏','梁山坝村级光伏','板凳坳村级光伏','龙坪村郭家坳','龙坪村余家淌','沿坪村级光伏'],
+						['黍子岭村级光伏'],
+						['茶园村级光伏','关口垭村级光伏','梓榔坪村级光伏','长丰村级光伏','八角庙村级光伏','沙地村级光伏','乐园村级光伏'],
+						['堡镇村级光伏', '青岗坪村级光伏', '七里坪村级光伏', '白沙驿村级光伏', '龙王冲村级光伏'],
+						['魏家洲村级光伏', '流溪村级光伏', '佑溪村级光伏']
+					];
+					let eqname = dtunumname[this.ProductActive][this.ProductActivetown]
+					var _this = this;
+					axios({
+						url: 'http://47.98.250.89:7002/eq/getselhistory',
+						method: 'get',
+						params: {
+							// page:_this.currpage,
+							eqid: eqid,
+							time1:htime1,
+							time2:htime2,
+							// page:1,
+						},
+					}).then(function(res) {
+						// console.log(res.data);
+						console.log(res.data);
+						_this.list = res.data;
+						_this.name = eqname;
+						for (var i = 0; i <= _this.list.length - 1; i++) {
+							_this.list[i].equipment = eqname;
+							_this.list[i].startTime = _this.transdate(_this.list[i].startTime);
+							_this.list[i].endTime = _this.transdate(_this.list[i].endTime);
+						}
+						_this.pagesum = Math.ceil(res.data.length / 10);
+						console.log(_this.list);
+					});
+				},
+				select() {
+					console.log(this.startdate);
+					console.log(this.enddate);
+					const dtunumarry = [
+						['t200618001', 't201109001', 't201101001'],
+						['t201001001', '', ''],
+						[],
+						[],
+						[],
+						[],
+						[],
+						[],
+						['t201109002'],
+						['t201109003', 't201109004', 't201109005', 't201109006', 't201109007'],
+						['t201109008', 't201109009', 't201109010']
+					];
+					const dtunumname = [
+						['合子坳村级光伏', '胡家棚村级光伏', '晒鼓坪村级光伏'],
+						['多宝寺村级光伏', '花桥村级光伏', '救师口村级光伏'],
+						['边家坪村级光伏','桂花园村级光伏','石磙淌村级光伏','钟家湾村级光伏'],
+						['塘坊河村级光伏','高桥村级光伏','立志坪村级光伏','五尖山村级光伏','峰岩村级光伏','水竹园村级光伏','璞岭村级光伏','城五河村级光伏'],
+						['鸭子口村级光伏','静安村级光伏','马连坪村级光伏','古坪村级光伏'],
+						['九龙村级光伏','柳松坪村级光伏','五房岭村级光伏','凉水寺村级光伏','泉水湾村级光伏','水连村级光伏','竹园坪村级光伏'],
+						['高峰村级光伏','双龙村级光伏','西坪村级光伏','布政村级光伏','龙池村级光伏','梁山坝村级光伏','板凳坳村级光伏','龙坪村郭家坳','龙坪村余家淌','沿坪村级光伏'],
+						['黍子岭村级光伏'],
+						['茶园村级光伏','关口垭村级光伏','梓榔坪村级光伏','长丰村级光伏','八角庙村级光伏','沙地村级光伏','乐园村级光伏'],
+						['堡镇村级光伏', '青岗坪村级光伏', '七里坪村级光伏', '白沙驿村级光伏', '龙王冲村级光伏'],
+						['魏家洲村级光伏', '流溪村级光伏', '佑溪村级光伏']
+					];
+					console.log(dtunumarry[this.ProductActive][this.ProductActivetown]);
+					if(this.startdate==''&&this.enddate==''){
+						this.getnow(dtunumarry[this.ProductActive][this.ProductActivetown]);
+					}else{
+						this.getselhistory(dtunumarry[this.ProductActive][this.ProductActivetown],this.startdate,this.enddate);
+					}
+					// if(dtunumarry[this.ProductActive][this.ProductActivetown]!=undefined){
+					//  this.getnow(dtunumarry[this.ProductActive][this.ProductActivetown]);
+					// }
+				},
+				changeProduct(event) {
+					// console.log(123);
+					console.log(this.ProductActive);
+					townarry = [
+						[{
+							id: 0,
+							title: '合子坳村级光伏'
+						}, {
+							id: 1,
+							title: '胡家棚村级光伏'
+						}, {
+							id: 2,
+							title: '晒鼓坪村级光伏'
+						}],
+						[{
+							id: 0,
+							title: '多宝寺村级光伏'
+						}, {
+							id: 1,
+							title: '花桥村级光伏'
+						}, {
+							id: 2,
+							title: '救师口村级光伏'
+						}],
+						[{
+							id: 0,
+							title: '边家坪村级光伏'
+						}, {
+							id: 1,
+							title: '桂花园村级光伏'
+						}, {
+							id: 2,
+							title: '石磙淌村级光伏'
+						}, {
+							id: 3,
+							title: '钟家湾村级光伏'
+						}],
+						[{
+							id: 0,
+							title: '塘坊河村级光伏'
+						}, {
+							id: 1,
+							title: '高桥村级光伏'
+						}, {
+							id: 2,
+							title: '立志坪村级光伏'
+						}, {
+							id: 3,
+							title: '五尖山村级光伏'
+						}, {
+							id: 4,
+							title: '峰岩村级光伏'
+						}, {
+							id: 5,
+							title: '水竹园村级光伏'
+						}, {
+							id: 6,
+							title: '璞岭村级光伏'
+						}, {
+							id: 7,
+							title: '城五河村级光伏'
+						}],
+						[{
+							id: 0,
+							title: '鸭子口村级光伏'
+						}, {
+							id: 1,
+							title: '静安村级光伏'
+						}, {
+							id: 2,
+							title: '马连坪村级光伏'
+						}, {
+							id: 3,
+							title: '古坪村级光伏'
+						}],
+						[{
+							id: 0,
+							title: '九龙村级光伏'
+						}, {
+							id: 1,
+							title: '柳松坪村级光伏'
+						}, {
+							id: 2,
+							title: '五房岭村级光伏'
+						}, {
+							id: 3,
+							title: '凉水寺村级光伏'
+						}, {
+							id: 4,
+							title: '泉水湾村级光伏'
+						}, {
+							id: 5,
+							title: '水连村级光伏'
+						}, {
+							id: 6,
+							title: '竹园坪村级光伏'
+						}],
+						[{
+							id: 0,
+							title: '高峰村级光伏'
+						}, {
+							id: 1,
+							title: '双龙村级光伏'
+						}, {
+							id: 2,
+							title: '西坪村级光伏'
+						}, {
+							id: 3,
+							title: '布政村级光伏'
+						}, {
+							id: 4,
+							title: '龙池村级光伏'
+						}, {
+							id: 5,
+							title: '梁山坝村级光伏'
+						}, {
+							id: 6,
+							title: '板凳坳村级光伏'
+						}, {
+							id: 7,
+							title: '龙坪村郭家坳光伏'
+						}, {
+							id: 8,
+							title: '龙坪村余家淌光伏'
+						}, {
+							id: 9,
+							title: '沿坪村级光伏'
+						}],
+						[{
+							id: 0,
+							title: '黍子岭村级光伏'
+						}],
+						[{
+							id: 0,
+							title: '茶园村级光伏'
+						}, {
+							id: 1,
+							title: '关口垭村级光伏'
+						}, {
+							id: 2,
+							title: '梓榔坪村级光伏'
+						}, {
+							id: 3,
+							title: '长丰村级光伏'
+						}, {
+							id: 4,
+							title: '八角庙村级光伏'
+						}, {
+							id: 5,
+							title: '沙地村级光伏'
+						}, {
+							id: 6,
+							title: '乐园村级光伏'
+						}],
+						[{
+							id: 0,
+							title: '堡镇村级光伏'
+						}, {
+							id: 1,
+							title: '青岗坪村级光伏'
+						}, {
+							id: 2,
+							title: '七里坪村级光伏'
+						}, {
+							id: 3,
+							title: '白沙驿村级光伏'
+						}, {
+							id: 4,
+							title: '龙王冲村级光伏'
+						}],
+						[{
+							id: 0,
+							title: '魏家洲村级光伏'
+						}, {
+							id: 1,
+							title: '流溪村级光伏'
+						}, {
+							id: 2,
+							title: '佑溪村级光伏'
+						}]
+					]
+					this.arry = townarry[this.ProductActive];
+				}
+			},
+			mounted() {
+				var v=sessionStorage['equipmentid'];
+				var eqid= v.replace("\"", "").replace("\"", "");
+				// var eqid = 't201101001';
+				// var _this = this;
+				this.getnow(eqid);
+			}
+		})
+	</script>
+	<script src="../js/xlsx.full.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/export.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		var btn_export = function() {
+			var table1 = document.querySelector("#table1");
+			var sheet = XLSX.utils.table_to_sheet(table1); //将一个table对象转换成一个sheet对象
+			openDownloadDialog(sheet2blob(sheet), '下载.xlsx');
+		}
+		var export1 = function() {
+			btn_export();
+		}
+	</script>
+</html>
